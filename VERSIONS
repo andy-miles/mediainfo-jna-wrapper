@@ -1,0 +1,21 @@
+MediaInfo DLL: 24.06
+LibZen (linux): 0.4.41
+
+MacOS (darwin) 24.06:
+    https://mediaarea.net/download/binary/libmediainfo0/24.06/MediaInfo_DLL_24.06_Mac_x86_64+arm64.tar.bz2
+Linux (24.06) + LibZen (0.4.41):
+    System environment packages: git automake autoconf libtool pkgconfig make gcc gcc-c++ zlib-dev
+    Custom built to include static dependencies:
+        git clone https://github.com/MediaArea/ZenLib.git \
+            && cd ZenLib/Project/GNU/Library \
+            && ./autogen.sh \
+            && ./configure --enable-static \
+            && make
+
+        git clone https://github.com/MediaArea/MediaInfoLib.git \
+            && cd MediaInfoLib/Project/GNU/Library \
+            && ./autogen.sh \
+            && ./configure --enable-static --enable-staticlibs \
+            && make
+Windows (24.06):
+    https://mediaarea.net/download/binary/libmediainfo0/24.06/MediaInfo_DLL_24.06_Windows_x64_WithoutInstaller.7z
