@@ -327,6 +327,15 @@ public class MediaInfoBaseTest {
     public void parseTime_withValidTime_shouldReturnInstant() {
         final Instant expected = ZonedDateTime.of(2020, 4, 15, 12, 30, 0, 0, ZoneId.of("UTC")).toInstant();
 
+        final Instant actual = MediaInfoBase.parseTime("UTC 2020-04-15 12:30:00");
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void parseTime_withValidAltFormattedTime_shouldReturnInstant() {
+        final Instant expected = ZonedDateTime.of(2020, 4, 15, 12, 30, 0, 0, ZoneId.of("UTC")).toInstant();
+
         final Instant actual = MediaInfoBase.parseTime("2020-04-15 12:30:00 UTC");
 
         assertEquals(expected, actual);

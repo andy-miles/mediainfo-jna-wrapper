@@ -30,6 +30,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 
@@ -39,6 +40,7 @@ import java.io.RandomAccessFile;
 import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -77,13 +79,16 @@ import static java.nio.charset.StandardCharsets.US_ASCII;
  *
  * @param <T> the concrete media info implementation type
  */
+@Slf4j
 @RequiredArgsConstructor
 public abstract class MediaInfoBase<T extends MediaInfoBase> implements AutoCloseable {
     private static final int BUFFER_SIZE_4_MB = 4194304;
     private static final int MIN_FILE_SIZE = 65536;
     private static final int MAX_FILENAME_LENGTH_WIN = 250;
     private static final String LIST_DELIMITER = "/";
-    private static final DateTimeFormatter CREATION_DATE_TIME_FORMATTER =
+    private static final DateTimeFormatter DATE_TIME_FORMATTER =
+            DateTimeFormatter.ofPattern("zzz uuuu-MM-dd HH:mm:ss");
+    private static final DateTimeFormatter DATE_TIME_FORMATTER_ALT =
             DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss zzz");
 
     private final Object lock = new Object();
@@ -183,7 +188,13 @@ public abstract class MediaInfoBase<T extends MediaInfoBase> implements AutoClos
             return null;
         }
 
-        return ZonedDateTime.parse(time, CREATION_DATE_TIME_FORMATTER).toInstant();
+        try {
+            return ZonedDateTime.parse(time, DATE_TIME_FORMATTER).toInstant();
+        } catch (final DateTimeParseException ex) {
+            log.debug("Timestamp does not match pattern: \"zzz uuuu-MM-dd HH:mm:ss\"");
+        }
+
+        return ZonedDateTime.parse(time, DATE_TIME_FORMATTER_ALT).toInstant();
     }
 
     /**
