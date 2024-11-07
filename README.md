@@ -83,7 +83,8 @@ MediaInfoAccessor accessor = new MediaInfoAccessor(library);
 
 // Opens a video file with the MediaInfo object being an AutoClosable
 try (MediaInfo myVideo = new MediaInfo(accessor).open("./MyVideo.mkv")) {
-    List<String> videoCodecs = MediaInfo.parseList(myVideo.get(StreamType.General, 0, "Video_Codec_List"));
+    List<String> videoCodecs =
+            MediaInfo.parseList(myVideo.get(StreamType.General, 0, "Video_Codec_List"));
     int videoWidth = Integer.parseInt(myVideo.get(StreamType.Video, 0, "Width"));
    
     // Get and parse additional parameters...
@@ -106,7 +107,8 @@ public class MyVideoMediaInfo extends MediaInfoBase<MyVideoMediaInfo>  {
     }
 
     public Duration getDuration() {
-        long value = (long) Double.parseDouble(getAccessor().get(StreamType.General, 0, "Duration"));
+        long value = (long) Double.parseDouble(
+                getAccessor().get(StreamType.General, 0, "Duration"));
         return Duration.ofMillis(value);
     }
 
