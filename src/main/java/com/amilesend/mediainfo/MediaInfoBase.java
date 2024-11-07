@@ -53,7 +53,7 @@ import static java.nio.charset.StandardCharsets.US_ASCII;
  *
  * Example usage:
  *
- * <code>
+ * <pre>
  * // Extend to define which parameters to access for your java application
  * public class MyVideoMediaInfoType extends MediaInfoBase<MyVideoMediaInfoType> {
  *     public MyMediaInfoType(MediaInfoAccessor accessor) {
@@ -75,7 +75,7 @@ import static java.nio.charset.StandardCharsets.US_ASCII;
  *
  *     // Access customized parameters accessor methods
  * }
- * </code>
+ * </pre>
  *
  * @param <T> the concrete media info implementation type
  */

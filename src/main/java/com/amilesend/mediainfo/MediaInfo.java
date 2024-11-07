@@ -32,7 +32,7 @@ import com.amilesend.mediainfo.type.StreamType;
  *
  * Example usage:
  *
- * <code>
+ * <pre>
  * MediaInfoLibrary library = MediaInfoLibrary.newInstance();
  * MediaInfoAccessor accessor = new MediaInfoAccessor(library);
  * try (MediaInfo myVideo = new MediaInfo(accessor).open("./MyVideo.mkv")) {
@@ -41,7 +41,7 @@ import com.amilesend.mediainfo.type.StreamType;
  *
  *     // Get and parse additional parameters...
  * }
- * </code>
+ * </pre>
  *
  * @see MediaInfoBase
  */

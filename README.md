@@ -143,6 +143,8 @@ try (MyVideoMediaInfo myVideo = new MyVideoMediaInfo(accessor).open("./MyVideo.m
 }
 ```
 
+<div align="right">(<a href="#readme-top">back to top</a>)</div>
+
 <!-- CONTRIBUTING -->
 ## Contributing
 
