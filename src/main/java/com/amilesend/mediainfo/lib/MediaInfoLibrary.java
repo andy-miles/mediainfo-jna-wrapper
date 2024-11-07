@@ -26,6 +26,7 @@ import com.google.common.collect.ImmutableMap;
 import com.sun.jna.FunctionMapper;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
+import com.sun.jna.Platform;
 import com.sun.jna.Pointer;
 import com.sun.jna.WString;
 
@@ -34,7 +35,7 @@ import java.util.Map;
 
 /** Defines the JNA interface to access the native libmediainfo library. */
 public interface MediaInfoLibrary extends Library {
-    String MEDIA_INFO_LIB_PATH = "mediainfo";
+    String MEDIA_INFO_LIB_PATH = "MediaInfo";
 
     /** Defines the java methods to library method mapping. */
     Map<String, String> METHOD_TO_FUNCTION_NAME_MAP = ImmutableMap.<String, String>builder()
@@ -59,12 +60,13 @@ public interface MediaInfoLibrary extends Library {
      * @return the media info library instance
      */
      static MediaInfoLibrary newInstance() {
+         final String mediaInfoLibPath = Platform.isWindows() ? MEDIA_INFO_LIB_PATH : MEDIA_INFO_LIB_PATH.toLowerCase();
          return Native.load(
-                MEDIA_INFO_LIB_PATH,
-                MediaInfoLibrary.class,
-                Collections.singletonMap(
-                        OPTION_FUNCTION_MAPPER,
-                        (FunctionMapper) (lib, method) -> METHOD_TO_FUNCTION_NAME_MAP.get(method.getName())));
+                 mediaInfoLibPath,
+                 MediaInfoLibrary.class,
+                 Collections.singletonMap(
+                         OPTION_FUNCTION_MAPPER,
+                         (FunctionMapper) (lib, method) -> METHOD_TO_FUNCTION_NAME_MAP.get(method.getName())));
     }
 
     /////////
