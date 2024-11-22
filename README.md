@@ -15,10 +15,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/andy-miles/mediainfo-jna-wrapper">
+  <a href="https://mediaarea.net/en/MediaInfo">
     <img src="https://mediaarea.net/images/45c0bef-f798f49.png" alt="Logo" width="128" height="128">
   </a>
-
+  <br/>
+  <a href="https://mediaarea.net/en/MediaInfo">mediaarea.net</a>
   <h3 align="center">mediainfo-jna-wrapper</h3>
 
   <p align="center">
@@ -66,7 +67,7 @@ A JNA wrapper to access the native MediaInfo library to parse media information 
 <a name="feature-highlights"></a>
 ## Feature Highlights
 1. JAR includes native libraries for MacOS (intel and arm), Linux (x64), and Windows (x64).
-   2. Other MediaInfoLib platforms can still be used as long as the native libraries are included in the library path
+   1. Other MediaInfoLib platforms can still be used as long as the native libraries are included in the library path
 3. Provides an abstract [MediaInfoBase](https://github.com/andy-miles/mediainfo-jna-wrapper/blob/main/src/main/java/com/amilesend/mediainfo/MediaInfoBase.java) class that can be extended to simplify access to media parameters.
 
 <div align="right">(<a href="#readme-top">back to top</a>)</div>
