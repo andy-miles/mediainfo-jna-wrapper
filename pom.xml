@@ -2,7 +2,7 @@
 <!--
 
     The MIT License
-    Copyright © 2024 Andy Miles
+    Copyright © 2024-2025 Andy Miles
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@
 
     <name>mediainfo-jna-wrapper</name>
     <description>A JNA wrapper to access MediaInfoLib</description>
-    <inceptionYear>2024</inceptionYear>
+    <inceptionYear>2024-2025</inceptionYear>
     <url></url>
     <organization>
         <name>Andy Miles</name>
@@ -123,7 +123,7 @@
         <jacoco.plugin.version>0.8.12</jacoco.plugin.version>
         <lombok.version>1.18.36</lombok.version>
         <maven.javadoc.plugin.version>3.11.2</maven.javadoc.plugin.version>
-        <mockito.version>5.14.2</mockito.version>
+        <mockito.version>5.15.2</mockito.version>
         <slf4j.version>2.0.16</slf4j.version>
     </properties>
 
@@ -303,6 +303,9 @@
                     <additionalJOption>-Xdoclint:-missing,-reference</additionalJOption>
                     <show>public</show>
                     <sourcepath>target/generated-sources/delombok</sourcepath>
+                    <bottom>
+                        <![CDATA[Copyright &#169; 2024-2025 <a href="https://www.amilesend.com">Andy Miles</a>. All rights reserved.]]>
+                    </bottom>
                 </configuration>
                 <executions>
                     <execution>
@@ -498,6 +501,10 @@
                 <configuration>
                     <additionalJOption>-Xdoclint:-missing,-reference</additionalJOption>
                     <show>public</show>
+                    <sourcepath>target/generated-sources/delombok</sourcepath>
+                    <bottom>
+                        <![CDATA[Copyright &#169; 2024-2025 <a href="https://www.amilesend.com">Andy Miles</a>. All rights reserved.]]>
+                    </bottom>
                 </configuration>
                 <reportSets>
                     <reportSet>
