@@ -118,7 +118,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.release>11</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spotbugs.version>4.9.1</spotbugs.version>
+        <spotbugs.version>4.9.2</spotbugs.version>
         <spotbugs.maven.plugin.version>4.9.1.0</spotbugs.maven.plugin.version>
         <jacoco.plugin.version>0.8.12</jacoco.plugin.version>
         <lombok.version>1.18.36</lombok.version>
@@ -457,7 +457,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- Required for maven-project-info-reports-plugin-3.8.0 for Doxia 2.0 stack -->
+            <!-- Required for maven-project-info-reports-plugin-3.9.0 for Doxia 2.0 stack -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
@@ -492,7 +492,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.9.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
