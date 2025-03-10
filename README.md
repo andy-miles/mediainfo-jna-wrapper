@@ -46,6 +46,7 @@
         <li><a href="#feature-highlights">Feature Highlights</a></li>
       </ul>
     </li>
+    <li><a href="#getting-started">Getting Started</a></li>
     <li>
       <a href="#usage">Usage</a>
       <ul>
@@ -69,6 +70,22 @@ A JNA wrapper to access the native MediaInfo library to parse media information 
 1. JAR includes native libraries for MacOS (intel and arm), Linux (x64), and Windows (x64).
    1. Other MediaInfoLib platforms can still be used as long as the native libraries are included in the library path
 3. Provides an abstract [MediaInfoBase](https://github.com/andy-miles/mediainfo-jna-wrapper/blob/main/src/main/java/com/amilesend/mediainfo/MediaInfoBase.java) class that can be extended to simplify access to media parameters.
+
+<div align="right">(<a href="#readme-top">back to top</a>)</div>
+
+<a name="getting-started"></a>
+## Getting Started
+
+Include this package as a dependency in your project. Note: This package is published to both
+[GitHub](https://github.com/andy-miles/mediainfo-jna-wrapper/packages/2306114) and Maven Central repositories.
+
+```xml
+<dependency>
+   <groupId>com.amilesend</groupId>
+   <artifactId>mediainfo-jna-wrapper</artifactId>
+   <version>1.0.5</version>
+</dependency>
+```
 
 <div align="right">(<a href="#readme-top">back to top</a>)</div>
 
