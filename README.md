@@ -83,7 +83,7 @@ Include this package as a dependency in your project. Note: This package is publ
 <dependency>
    <groupId>com.amilesend</groupId>
    <artifactId>mediainfo-jna-wrapper</artifactId>
-   <version>1.0.5</version>
+   <version>1.0.6</version>
 </dependency>
 ```
 
