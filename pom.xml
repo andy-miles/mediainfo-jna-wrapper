@@ -30,7 +30,7 @@
 
     <groupId>com.amilesend</groupId>
     <artifactId>mediainfo-jna-wrapper</artifactId>
-    <version>1.1</version>
+    <version>1.1.1-SNAPSHOT</version>
 
     <name>mediainfo-jna-wrapper</name>
     <description>A JNA wrapper to access MediaInfoLib</description>
@@ -42,8 +42,8 @@
     </organization>
     <licenses>
         <license>
-            <name>MIT License</name>
-            <url>https://mit-license.org/</url>
+            <name>MIT License + MediaInfoLib Binary License</name>
+            <url>https://raw.githubusercontent.com/andy-miles/mediainfo-jna-wrapper/refs/heads/main/LICENSE</url>
         </license>
     </licenses>
     <scm>
