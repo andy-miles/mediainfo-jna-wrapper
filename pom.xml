@@ -30,7 +30,7 @@
 
     <groupId>com.amilesend</groupId>
     <artifactId>mediainfo-jna-wrapper</artifactId>
-    <version>1.2</version>
+    <version>1.2.1-SNAPSHOT</version>
 
     <name>mediainfo-jna-wrapper</name>
     <description>A JNA wrapper to access MediaInfoLib</description>
