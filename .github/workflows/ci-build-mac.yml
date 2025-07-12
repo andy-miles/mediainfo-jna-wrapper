@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: CI Build - windows
+name: CI Build - mac
 
 on:
   push:
