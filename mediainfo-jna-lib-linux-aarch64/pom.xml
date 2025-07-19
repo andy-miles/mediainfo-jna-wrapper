@@ -33,6 +33,7 @@
         <artifactId>mediainfo-jna</artifactId>
         <version>2.0</version>
     </parent>
+    <name>mediainfo-jna-lib-linux-aarch64</name>
     <artifactId>mediainfo-jna-lib-linux-aarch64</artifactId>
     <description>The Linux ARM64 MediaInfoLib binary as a JAR package</description>
     <packaging>jar</packaging>

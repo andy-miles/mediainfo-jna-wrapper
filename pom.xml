@@ -33,7 +33,7 @@
     <version>2.0</version>
     <packaging>pom</packaging>
 
-    <name>mediainfo-jna-wrapper</name>
+    <name>mediainfo-jna</name>
     <description>A JNA wrapper to access MediaInfoLib</description>
     <inceptionYear>2024-2025</inceptionYear>
     <url>https://www.amilesend.com/mediainfo-jna-wrapper/</url>
