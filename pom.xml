@@ -66,7 +66,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.javadoc.plugin.version>3.11.2</maven.javadoc.plugin.version>
         <maven.site.plugin.version>3.21.0</maven.site.plugin.version>
-        <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
+        <maven.gpg.plugin.version>3.2.8</maven.gpg.plugin.version>
+        <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
     </properties>
 
     <profiles>
@@ -84,7 +85,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>${maven-gpg-plugin.version}</version>
+                        <version>${maven.gpg.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -123,7 +124,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>${maven-gpg-plugin.version}</version>
+                        <version>${maven.gpg.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -159,11 +160,28 @@
         </profile>
     </profiles>
 
-
-
-    <!-- Required for maven-project-info-reports-plugin-3.9.0 for Doxia 2.0 stack -->
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.6.1</version>
+                <executions>
+                    <execution>
+                        <id>enforce-maven</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>3.6.3</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
@@ -190,6 +208,7 @@
                     </licenseSets>
                 </configuration>
             </plugin>
+            <!-- Required for maven-project-info-reports-plugin-3.9.0 for Doxia 2.0 stack -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
