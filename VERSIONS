@@ -19,3 +19,5 @@ Linux (25.04) + LibZen (0.4.41):
             && make
 Windows:
     https://mediaarea.net/download/binary/libmediainfo0/25.04/MediaInfo_DLL_25.04_Windows_x64_WithoutInstaller.7z
+    https://mediaarea.net/download/binary/libmediainfo0/25.04/MediaInfo_DLL_25.04_Windows_ARM64_WithoutInstaller.7z
+

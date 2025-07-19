@@ -29,8 +29,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.amilesend</groupId>
-    <artifactId>mediainfo-jna-wrapper</artifactId>
-    <version>1.2.2-SNAPSHOT</version>
+    <artifactId>mediainfo-jna</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <name>mediainfo-jna-wrapper</name>
     <description>A JNA wrapper to access MediaInfoLib</description>
@@ -59,7 +60,53 @@
             <url>https://www.amilesend.com</url>
         </developer>
     </developers>
+
+    <properties>
+        <maven.compiler.release>11</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.javadoc.plugin.version>3.11.2</maven.javadoc.plugin.version>
+        <maven.site.plugin.version>3.21.0</maven.site.plugin.version>
+        <maven.gpg.plugin.version>3.2.8</maven.gpg.plugin.version>
+        <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
+    </properties>
+
     <profiles>
+        <profile>
+            <id>local</id>
+            <distributionManagement>
+                <repository>
+                    <id>local-release</id>
+                    <name>Local deployment for testing</name>
+                    <url>file:./target/release</url>
+                </repository>
+            </distributionManagement>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven.gpg.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <keyname>${gpg.keyname}</keyname>
+                                    <passphraseServerId>${gpg.keyname}</passphraseServerId>
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
         <profile>
             <id>github</id>
             <distributionManagement>
@@ -77,7 +124,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>3.2.8</version>
+                        <version>${maven.gpg.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -113,80 +160,6 @@
         </profile>
     </profiles>
 
-    <properties>
-        <maven.compiler.release>11</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spotbugs.version>4.9.3</spotbugs.version>
-        <spotbugs.maven.plugin.version>4.9.3.2</spotbugs.maven.plugin.version>
-        <jacoco.plugin.version>0.8.13</jacoco.plugin.version>
-        <lombok.version>1.18.38</lombok.version>
-        <maven.javadoc.plugin.version>3.11.2</maven.javadoc.plugin.version>
-        <mockito.version>5.18.0</mockito.version>
-        <slf4j.version>2.0.16</slf4j.version>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.13.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-junit-jupiter</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.spotbugs</groupId>
-            <artifactId>spotbugs-annotations</artifactId>
-            <version>${spotbugs.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <!-- Logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- Guava -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>33.4.8-jre</version>
-        </dependency>
-        <!-- Apache Commons -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.18.0</version>
-        </dependency>
-        <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna-platform</artifactId>
-            <version>5.17.0</version>
-        </dependency>
-    </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -210,152 +183,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.14.0</version>
-                <configuration>
-                    <compilerArgs>
-                        <!-- Required for Lombok annotation processing on JDK 21+ -->
-                        <arg>-proc:full</arg>
-                    </compilerArgs>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>2.18.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.8.1</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>properties</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.3</version>
-                <configuration>
-                    <!-- Suppress warnings for mockito -->
-                    <argLine>@{argLine} -XX:+EnableDynamicAgentLoading -javaagent:${org.mockito:mockito-core:jar}</argLine>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok-maven-plugin</artifactId>
-                <version>1.18.20.0</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.projectlombok</groupId>
-                        <artifactId>lombok</artifactId>
-                        <version>${lombok.version}</version>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>delombok</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <addOutputDirectory>false</addOutputDirectory>
-                    <sourceDirectory>src/main/java</sourceDirectory>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>${spotbugs.maven.plugin.version}</version>
-                <configuration>
-                    <includeFilterFile>src/main/spotbugs-include.xml</includeFilterFile>
-                    <excludeFilterFile>src/main/spotbugs-exclude.xml</excludeFilterFile>
-                    <plugins>
-                        <plugin>
-                            <groupId>com.h3xstream.findsecbugs</groupId>
-                            <artifactId>findsecbugs-plugin</artifactId>
-                            <version>1.12.0</version>
-                        </plugin>
-                    </plugins>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.github.spotbugs</groupId>
-                        <artifactId>spotbugs</artifactId>
-                        <version>${spotbugs.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>${maven.javadoc.plugin.version}</version>
-                <configuration>
-                    <additionalJOption>-Xdoclint:-missing,-reference</additionalJOption>
-                    <show>public</show>
-                    <sourcepath>target/generated-sources/delombok</sourcepath>
-                    <bottom>
-                        <![CDATA[Copyright &#169; 2024-2025 <a href="https://www.amilesend.com">Andy Miles</a>. All rights reserved.]]>
-                    </bottom>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>javadoc</goal>
-                        </goals>
-                        <phase>site</phase>
-                    </execution>
-                    <execution>
-                        <id>generate-javadoc</id>
-                        <goals>
-                            <goal>javadoc</goal>
-                        </goals>
-                        <!-- Required to run the hacky annotation formatting fix before bundling as a jar -->
-                        <phase>prepare-package</phase>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.google.code.maven-replacer-plugin</groupId>
-                <artifactId>replacer</artifactId>
-                <version>1.5.3</version>
-                <executions>
-                    <execution>
-                        <id>fix-javadoc-nonnull-site</id>
-                        <goals>
-                            <goal>replace</goal>
-                        </goals>
-                        <phase>site</phase>
-                    </execution>
-                    <execution>
-                        <id>fix-javadoc-nonnull</id>
-                        <goals>
-                            <goal>replace</goal>
-                        </goals>
-                        <!-- Required to run the hacky annotation formatting fix before bundling as a jar -->
-                        <phase>prepare-package</phase>
-                    </execution>
-                </executions>
-                <!-- Hack to fix the duplicate lombok @NonNull annotations in the method parameters for the javadoc -->
-                <configuration>
-                    <basedir>.</basedir>
-                    <includes>
-                        <include>target/**/com/amilesend/**/*.html</include>
-                    </includes>
-                    <tokenValueMap>src/main/javadoc-format-fix.conf</tokenValueMap>
-                    <regexFlags>
-                        <regexFlag>MULTILINE</regexFlag>
-                    </regexFlags>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
                 <version>5.0.0</version>
@@ -371,9 +198,9 @@
                                 <exclude>**/README</exclude>
                                 <exclude>**/README.md</exclude>
                                 <exclude>**/VERSIONS</exclude>
-                                <exclude>src/test/resources/**</exclude>
-                                <exclude>src/test/SampleVideo**</exclude>
-                                <exclude>src/main/resources/**</exclude>
+                                <exclude>**/resources/**</exclude>
+                                <exclude>**/SampleVideo**</exclude>
+                                <exclude>**/resources/**</exclude>
                                 <exclude>**/lombok.config</exclude>
                                 <exclude>**/javadoc-format-fix.conf</exclude>
                             </excludes>
@@ -381,112 +208,7 @@
                     </licenseSets>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-source</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>pre-unit-test</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>post-unit-test</id>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                        <phase>test</phase>
-                    </execution>
-                    <execution>
-                        <id>check-coverage</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <rule>
-                                    <element>BUNDLE</element>
-                                    <limits>
-                                        <limit>
-                                            <counter>COMPLEXITY</counter>
-                                            <value>COVEREDRATIO</value>
-                                            <minimum>0.80</minimum>
-                                        </limit>
-                                    </limits>
-                                </rule>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- Manually build the javadoc jar to include the format fixes -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.7.1</version>
-                <executions>
-                    <execution>
-                        <id>javadoc-jar</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <appendAssemblyId>true</appendAssemblyId>
-                            <descriptors>
-                                <descriptor>src/main/docs-assemble.xml</descriptor>
-                            </descriptors>
-                        </configuration>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
             <!-- Required for maven-project-info-reports-plugin-3.9.0 for Doxia 2.0 stack -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.21.0</version>
-            </plugin>
-        </plugins>
-    </build>
-
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.plugin.version}</version>
-            </plugin>
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>${spotbugs.maven.plugin.version}</version>
-                <configuration>
-                    <includeFilterFile>src/main/spotbugs-include.xml</includeFilterFile>
-                    <excludeFilterFile>src/main/spotbugs-exclude.xml</excludeFilterFile>
-                    <plugins>
-                        <plugin>
-                            <groupId>com.h3xstream.findsecbugs</groupId>
-                            <artifactId>findsecbugs-plugin</artifactId>
-                            <version>1.12.0</version>
-                        </plugin>
-                    </plugins>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
@@ -494,25 +216,19 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>${maven.javadoc.plugin.version}</version>
-                <configuration>
-                    <additionalJOption>-Xdoclint:-missing,-reference</additionalJOption>
-                    <show>public</show>
-                    <sourcepath>target/generated-sources/delombok</sourcepath>
-                    <bottom>
-                        <![CDATA[Copyright &#169; 2024-2025 <a href="https://www.amilesend.com">Andy Miles</a>. All rights reserved.]]>
-                    </bottom>
-                </configuration>
-                <reportSets>
-                    <reportSet>
-                        <id>default</id>
-                        <reports>
-                            <report>javadoc</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${maven.site.plugin.version}</version>
             </plugin>
         </plugins>
-    </reporting>
+    </build>
+
+    <modules>
+        <module>mediainfo-jna-lib-mac-aarch64</module>
+        <module>mediainfo-jna-lib-mac-x86-64</module>
+        <module>mediainfo-jna-lib-linux-x86-64</module>
+        <module>mediainfo-jna-lib-linux-aarch64</module>
+        <module>mediainfo-jna-lib-win-x86-64</module>
+        <module>mediainfo-jna-lib-win-arm64</module>
+        <module>mediainfo-jna-wrapper</module>
+    </modules>
 </project>
