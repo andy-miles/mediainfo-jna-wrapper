@@ -76,16 +76,73 @@ A JNA wrapper to access the native MediaInfo library to parse media information 
 <a name="getting-started"></a>
 ## Getting Started
 
-Include this package as a dependency in your project. Note: This package is published to both
+Include the following package dependencies in your project's classpath. Note: These packages are published to both
 [GitHub](https://github.com/andy-miles/mediainfo-jna-wrapper/packages/2306114) and Maven Central repositories.
 
-```xml
-<dependency>
-   <groupId>com.amilesend</groupId>
-   <artifactId>mediainfo-jna-wrapper</artifactId>
-   <version>1.2.1</version>
-</dependency>
-```
+1. Required interface package
+
+   ```xml
+   <dependency>
+      <groupId>com.amilesend</groupId>
+      <artifactId>mediainfo-jna-wrapper</artifactId>
+      <version>2.0</version>
+   </dependency>
+   ```
+2. Platform-specific library packages
+You may select 1 or more of the following for your project:
+   1. Linux
+      1. x64
+      ```xml
+      <dependency>
+         <groupId>com.amilesend</groupId>
+         <artifactId>mediainfo-jna-lib-linux-x86-64</artifactId>
+         <version>2.0</version>
+      </dependency>
+      ```
+      2. ARM64
+      ```xml
+      <dependency>
+         <groupId>com.amilesend</groupId>
+         <artifactId>mediainfo-jna-lib-linux-aarch64</artifactId>
+         <version>2.0</version>
+      </dependency>
+      ```
+   2. MacOS
+      1. ARM
+      ```xml
+      <dependency>
+         <groupId>com.amilesend</groupId>
+         <artifactId>mediainfo-jna-lib-mac-aarch64</artifactId>
+         <version>2.0</version>
+      </dependency>
+      ```
+      2. Intel
+
+      ```xml
+      <dependency>
+         <groupId>com.amilesend</groupId>
+         <artifactId>mediainfo-jna-lib-mac-x86-64</artifactId>
+         <version>2.0</version>
+      </dependency>
+      ```
+   3. Windows
+      1. x64
+
+      ```xml
+      <dependency>
+         <groupId>com.amilesend</groupId>
+         <artifactId>mediainfo-jna-lib-win-x86-64</artifactId>
+         <version>2.0</version>
+      </dependency>
+      ```
+      2. ARM
+      ```xml
+      <dependency>
+         <groupId>com.amilesend</groupId>
+         <artifactId>mediainfo-jna-lib-win-arm64</artifactId>
+         <version>2.0</version>
+      </dependency>
+      ```
 
 <div align="right">(<a href="#readme-top">back to top</a>)</div>
 
