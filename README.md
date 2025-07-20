@@ -67,8 +67,8 @@ A JNA wrapper to access the native MediaInfo library to parse media information 
 
 <a name="feature-highlights"></a>
 ## Feature Highlights
-1. JAR includes native libraries for MacOS (intel and arm), Linux (x64), and Windows (x64).
-   1. Other MediaInfoLib platforms can still be used as long as the native libraries are included in the library path
+1. Native library JARs are available for MacOS (Intel and ARM), Linux (x64 and ARM), and Windows (x64 and ARM).
+   * Note: Other MediaInfoLib platforms can still be used as long as the native libraries are included in the library path
 3. Provides an abstract [MediaInfoBase](https://github.com/andy-miles/mediainfo-jna-wrapper/blob/main/src/main/java/com/amilesend/mediainfo/MediaInfoBase.java) class that can be extended to simplify access to media parameters.
 
 <div align="right">(<a href="#readme-top">back to top</a>)</div>
