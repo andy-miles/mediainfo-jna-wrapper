@@ -241,7 +241,7 @@ Don't forget to give the project a star! Thanks again!
 
 Distributed under the MIT license. 
 
-The built JAR also uses the MediaInfoLib Binary License for the bundled native libraries:
+The built binary JARs also uses the MediaInfoLib Binary License for the bundled native libraries:
 ```
 This product uses MediaInfo library, Copyright (c) 2002-2025 MediaArea.net SARL.
 Website: https://mediaarea.net/en/MediaInfo
