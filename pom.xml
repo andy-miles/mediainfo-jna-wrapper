@@ -227,7 +227,7 @@
         <module>mediainfo-jna-lib-linux-x86-64</module>
         <module>mediainfo-jna-lib-linux-aarch64</module>
         <module>mediainfo-jna-lib-win-x86-64</module>
-        <module>mediainfo-jna-lib-win-arm64</module>
+        <module>mediainfo-jna-lib-win-aarch64</module>
         <module>mediainfo-jna-wrapper</module>
     </modules>
 </project>

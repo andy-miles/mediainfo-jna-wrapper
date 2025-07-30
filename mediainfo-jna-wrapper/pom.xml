@@ -124,7 +124,7 @@
             </dependencies>
         </profile>
         <profile>
-            <id>win-arm64</id>
+            <id>win-aarch64</id>
             <activation>
                 <os>
                     <family>windows</family>
@@ -134,7 +134,7 @@
             <dependencies>
                 <dependency>
                     <groupId>com.amilesend</groupId>
-                    <artifactId>mediainfo-jna-lib-win-arm64</artifactId>
+                    <artifactId>mediainfo-jna-lib-win-aarch64</artifactId>
                     <version>2.0.2-SNAPSHOT</version>
                     <scope>test</scope>
                 </dependency>
