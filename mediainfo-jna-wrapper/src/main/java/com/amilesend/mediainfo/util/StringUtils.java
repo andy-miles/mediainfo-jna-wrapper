@@ -39,24 +39,4 @@ public class StringUtils {
     public static boolean isNotBlank(final CharSequence cs) {
         return !isBlank(cs);
     }
-
-    /**
-     * Determines if the given char sequence is empty.
-     *
-     * @param cs the char sequence to evaluate
-     * @return {@code true} if empty; else, {@code false}
-     */
-    public static boolean isEmpty(final CharSequence cs) {
-        return Objects.isNull(cs) || cs.length() == 0;
-    }
-
-    /**
-     * Determines if the given char sequence is not empty.
-     *
-     * @param cs the char sequence to evaluate
-     * @return {@code true} if not empty; else, {@code false}
-     */
-    public static boolean isNotEmpty(final CharSequence cs) {
-        return !isEmpty(cs);
-    }
 }
