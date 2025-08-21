@@ -24,10 +24,9 @@ package com.amilesend.mediainfo;
 
 import com.amilesend.mediainfo.lib.MediaInfoAccessor;
 import com.amilesend.mediainfo.type.Status;
+import com.amilesend.mediainfo.util.StringUtils;
 import com.sun.jna.Platform;
 import lombok.SneakyThrows;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -39,6 +38,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.security.SecureRandom;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -276,7 +276,7 @@ public class MediaInfoBaseTest {
         try (MockedStatic<Platform> platformMockedStatic = mockStatic(Platform.class)) {
             platformMockedStatic.when(() -> Platform.isWindows()).thenReturn(true);
 
-            assertTrue(mediaInfoUnderTest.preferOpenViaBuffer(RandomStringUtils.secure().next(256)));
+            assertTrue(mediaInfoUnderTest.preferOpenViaBuffer(newRandomString(256)));
         }
     }
 
@@ -285,7 +285,7 @@ public class MediaInfoBaseTest {
         try (MockedStatic<Platform> platformMockedStatic = mockStatic(Platform.class)) {
             platformMockedStatic.when(() -> Platform.isWindows()).thenReturn(true);
 
-            assertFalse(mediaInfoUnderTest.preferOpenViaBuffer(RandomStringUtils.secure().next(100)));
+            assertFalse(mediaInfoUnderTest.preferOpenViaBuffer(newRandomString(100)));
         }
     }
 
@@ -375,5 +375,12 @@ public class MediaInfoBaseTest {
         assertAll(
                 () -> assertTrue(MediaInfoBase.parseList(null).isEmpty()),
                 () -> assertTrue(MediaInfoBase.parseList(StringUtils.EMPTY).isEmpty()));
+    }
+
+    public static String newRandomString(final int length) {
+        return new SecureRandom().ints(97, 122 + 1)
+                .limit(length)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
     }
 }

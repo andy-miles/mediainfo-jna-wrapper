@@ -22,7 +22,6 @@
  */
 package com.amilesend.mediainfo.lib;
 
-import com.google.common.collect.ImmutableMap;
 import com.sun.jna.FunctionMapper;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
@@ -38,21 +37,20 @@ public interface MediaInfoLibrary extends Library {
     String MEDIA_INFO_LIB_PATH = "MediaInfo";
 
     /** Defines the java methods to library method mapping. */
-    Map<String, String> METHOD_TO_FUNCTION_NAME_MAP = ImmutableMap.<String, String>builder()
-            .put("newHandle", "MediaInfo_New")
-            .put("deleteHandle", "MediaInfo_Delete")
-            .put("open", "MediaInfo_Open")
-            .put("openBufferInit", "MediaInfo_Open_Buffer_Init")
-            .put("openBufferContinue", "MediaInfo_Open_Buffer_Continue")
-            .put("openBufferContinueGotoGet", "MediaInfo_Open_Buffer_Continue_GoTo_Get")
-            .put("openBufferFinalize", "MediaInfo_Open_Buffer_Finalize")
-            .put("close", "MediaInfo_Close")
-            .put("inform", "MediaInfo_Inform")
-            .put("get", "MediaInfo_Get")
-            .put("getI", "MediaInfo_GetI")
-            .put("countGet", "MediaInfo_Count_Get")
-            .put("option", "MediaInfo_Option")
-            .build();
+    Map<String, String> METHOD_TO_FUNCTION_NAME_MAP = Map.ofEntries(
+            Map.entry("newHandle", "MediaInfo_New"),
+            Map.entry("deleteHandle", "MediaInfo_Delete"),
+            Map.entry("open", "MediaInfo_Open"),
+            Map.entry("openBufferInit", "MediaInfo_Open_Buffer_Init"),
+            Map.entry("openBufferContinue", "MediaInfo_Open_Buffer_Continue"),
+            Map.entry("openBufferContinueGotoGet", "MediaInfo_Open_Buffer_Continue_GoTo_Get"),
+            Map.entry("openBufferFinalize", "MediaInfo_Open_Buffer_Finalize"),
+            Map.entry("close", "MediaInfo_Close"),
+            Map.entry("inform", "MediaInfo_Inform"),
+            Map.entry("get", "MediaInfo_Get"),
+            Map.entry("getI", "MediaInfo_GetI"),
+            Map.entry("countGet", "MediaInfo_Count_Get"),
+            Map.entry("option", "MediaInfo_Option"));
 
     /**
      * Creates a new {@link MediaInfoLibrary} instance.

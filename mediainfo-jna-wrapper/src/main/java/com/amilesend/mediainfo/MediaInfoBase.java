@@ -24,15 +24,15 @@ package com.amilesend.mediainfo;
 
 import com.amilesend.mediainfo.lib.MediaInfoAccessor;
 import com.amilesend.mediainfo.type.Status;
-import com.google.common.annotations.VisibleForTesting;
+import com.amilesend.mediainfo.util.StringUtils;
+import com.amilesend.mediainfo.util.Validate;
+import com.amilesend.mediainfo.util.VisibleForTesting;
 import com.sun.jna.Platform;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.Validate;
 
 import java.io.File;
 import java.io.IOException;

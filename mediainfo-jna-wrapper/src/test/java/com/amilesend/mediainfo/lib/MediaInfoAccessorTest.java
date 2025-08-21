@@ -24,9 +24,9 @@ package com.amilesend.mediainfo.lib;
 
 import com.amilesend.mediainfo.type.InfoType;
 import com.amilesend.mediainfo.type.StreamType;
+import com.amilesend.mediainfo.util.StringUtils;
 import com.sun.jna.Pointer;
 import com.sun.jna.WString;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -55,6 +55,7 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class MediaInfoAccessorTest {
+
     @Mock
     private MediaInfoLibrary mockLibrary;
     @Mock

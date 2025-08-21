@@ -25,7 +25,8 @@ package com.amilesend.mediainfo.lib;
 import com.amilesend.mediainfo.type.InfoType;
 import com.amilesend.mediainfo.type.Status;
 import com.amilesend.mediainfo.type.StreamType;
-import com.google.common.annotations.VisibleForTesting;
+import com.amilesend.mediainfo.util.StringUtils;
+import com.amilesend.mediainfo.util.Validate;
 import com.sun.jna.Pointer;
 import com.sun.jna.WString;
 import lombok.AccessLevel;
@@ -33,8 +34,6 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.Validate;
 
 import java.util.Objects;
 import java.util.concurrent.locks.ReentrantLock;
@@ -46,7 +45,6 @@ public class MediaInfoAccessor implements AutoCloseable {
     private MediaInfoLibrary mediaInfoLibrary;
     @Getter(AccessLevel.PACKAGE)
     @Setter(AccessLevel.PACKAGE)
-    @VisibleForTesting
     private Pointer mediaInfoLibPointer;
 
     /**
@@ -357,7 +355,7 @@ public class MediaInfoAccessor implements AutoCloseable {
      */
     public int getStreamCount(@NonNull final StreamType streamType) {
         final String streamCount = get(streamType, 0, "StreamCount");
-        if (StringUtils.isEmpty(streamCount)) {
+        if (StringUtils.isBlank(streamCount)) {
             return 0;
         }
 
