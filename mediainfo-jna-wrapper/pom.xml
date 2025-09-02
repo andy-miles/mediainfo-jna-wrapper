@@ -144,7 +144,7 @@
 
     <properties>
         <spotbugs.version>4.9.4</spotbugs.version>
-        <spotbugs.maven.plugin.version>4.9.4.0</spotbugs.maven.plugin.version>
+        <spotbugs.maven.plugin.version>4.9.4.1</spotbugs.maven.plugin.version>
         <jacoco.plugin.version>0.8.13</jacoco.plugin.version>
         <lombok.version>1.18.38</lombok.version>
         <mockito.version>5.19.0</mockito.version>
