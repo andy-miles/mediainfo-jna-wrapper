@@ -143,8 +143,8 @@
     </profiles>
 
     <properties>
-        <spotbugs.version>4.9.4</spotbugs.version>
-        <spotbugs.maven.plugin.version>4.9.4.1</spotbugs.maven.plugin.version>
+        <spotbugs.version>4.9.5</spotbugs.version>
+        <spotbugs.maven.plugin.version>4.9.5.0</spotbugs.maven.plugin.version>
         <jacoco.plugin.version>0.8.13</jacoco.plugin.version>
         <lombok.version>1.18.40</lombok.version>
         <mockito.version>5.19.0</mockito.version>
@@ -227,7 +227,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.3</version>
+                <version>3.5.4</version>
                 <configuration>
                     <!-- Suppress warnings for mockito -->
                     <argLine>@{argLine} -XX:+EnableDynamicAgentLoading -javaagent:${org.mockito:mockito-core:jar}</argLine>
