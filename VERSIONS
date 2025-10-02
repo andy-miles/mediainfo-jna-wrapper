@@ -1,9 +1,9 @@
-MediaInfo DLL: 25.07
+MediaInfo DLL: 25.09
 LibZen (linux): 0.4.41
 
 MacOS (darwin):
-    https://mediaarea.net/download/binary/libmediainfo0/25.07/MediaInfo_DLL_25.07_Mac_x86_64+arm64.tar.bz2
-Linux (25.07) + LibZen (0.4.41):
+    https://mediaarea.net/download/binary/libmediainfo0/25.09/MediaInfo_DLL_25.09_Mac_x86_64+arm64.tar.bz2
+Linux (25.09) + LibZen (0.4.41):
     System environment packages: git automake autoconf libtool pkgconfig make gcc gcc-c++ zlib-dev
     Custom built to include static dependencies:
         git clone https://github.com/MediaArea/ZenLib.git \
@@ -18,6 +18,6 @@ Linux (25.07) + LibZen (0.4.41):
             && ./configure --enable-static --enable-staticlibs \
             && make
 Windows:
-    https://mediaarea.net/download/binary/libmediainfo0/25.07/MediaInfo_DLL_25.07_Windows_x64_WithoutInstaller.7z
-    https://mediaarea.net/download/binary/libmediainfo0/25.07/MediaInfo_DLL_25.07_Windows_ARM64_WithoutInstaller.7z
+    https://mediaarea.net/download/binary/libmediainfo0/25.09/MediaInfo_DLL_25.09_Windows_x64_WithoutInstaller.7z
+    https://mediaarea.net/download/binary/libmediainfo0/25.09/MediaInfo_DLL_25.09_Windows_ARM64_WithoutInstaller.7z
 
