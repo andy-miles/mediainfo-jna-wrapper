@@ -155,6 +155,10 @@ public abstract class MediaInfoBase<T extends MediaInfoBase> implements AutoClos
         int read = -1;
         do {
             read = file.read(buffer);
+            if (read < 0) {
+                break;
+            }
+
             final int result = accessor.openBufferContinue(buffer, read);
             if ((result & 8) == Status.Finalized.getValue()) {
                 break;

@@ -259,6 +259,22 @@ public class MediaInfoBaseTest {
 
     @Test
     @SneakyThrows
+    public void openViaBuffer_withEndOfFileReached_shouldNotReadFile() {
+        final RandomAccessFile mockFile = mock(RandomAccessFile.class);
+        when(mockFile.read(any(byte[].class))).thenReturn(-1); // End of file reached
+        when(mockAccessor.openBufferInit(anyLong(), anyLong())).thenReturn(true);
+
+        final boolean actual = mediaInfoUnderTest.openViaBuffer(mockFile);
+
+        assertAll(
+                () -> assertTrue(actual),
+                () -> verify(mockAccessor, never()).openBufferContinue(any(byte[].class), anyInt()),
+                () -> verify(mockAccessor, never()).openBufferContinueGotoGet(),
+                () -> verify(mockAccessor).openBufferFinalize());
+    }
+
+    @Test
+    @SneakyThrows
     public void openViaBuffer_withIOException_shouldThrowException() {
         final RandomAccessFile mockFile = mock(RandomAccessFile.class);
         when(mockFile.read(any(byte[].class))).thenThrow(new IOException("Exception"));
