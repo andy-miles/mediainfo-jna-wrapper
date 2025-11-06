@@ -85,7 +85,7 @@ Include the following package dependencies in your project's classpath. Note: Th
    <dependency>
       <groupId>com.amilesend</groupId>
       <artifactId>mediainfo-jna-wrapper</artifactId>
-      <version>2.1.4</version>
+      <version>2.1.5</version>
    </dependency>
    ```
 2. Platform-specific library packages
@@ -96,7 +96,7 @@ You may select 1 or more of the following for your project:
       <dependency>
          <groupId>com.amilesend</groupId>
          <artifactId>mediainfo-jna-lib-linux-x86-64</artifactId>
-         <version>2.1.4</version>
+         <version>2.1.5</version>
       </dependency>
       ```
       2. ARM64
@@ -104,7 +104,7 @@ You may select 1 or more of the following for your project:
       <dependency>
          <groupId>com.amilesend</groupId>
          <artifactId>mediainfo-jna-lib-linux-aarch64</artifactId>
-         <version>2.1.4</version>
+         <version>2.1.5</version>
       </dependency>
       ```
    2. MacOS
@@ -113,7 +113,7 @@ You may select 1 or more of the following for your project:
       <dependency>
          <groupId>com.amilesend</groupId>
          <artifactId>mediainfo-jna-lib-mac-aarch64</artifactId>
-         <version>2.1.4</version>
+         <version>2.1.5</version>
       </dependency>
       ```
       2. Intel
@@ -122,7 +122,7 @@ You may select 1 or more of the following for your project:
       <dependency>
          <groupId>com.amilesend</groupId>
          <artifactId>mediainfo-jna-lib-mac-x86-64</artifactId>
-         <version>2.1.4</version>
+         <version>2.1.5</version>
       </dependency>
       ```
    3. Windows
@@ -132,7 +132,7 @@ You may select 1 or more of the following for your project:
       <dependency>
          <groupId>com.amilesend</groupId>
          <artifactId>mediainfo-jna-lib-win-x86-64</artifactId>
-         <version>2.1.4</version>
+         <version>2.1.5</version>
       </dependency>
       ```
       2. ARM
@@ -140,7 +140,7 @@ You may select 1 or more of the following for your project:
       <dependency>
          <groupId>com.amilesend</groupId>
          <artifactId>mediainfo-jna-lib-win-aarch64</artifactId>
-         <version>2.1.4</version>
+         <version>2.1.5</version>
       </dependency>
       ```
 
