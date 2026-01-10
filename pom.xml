@@ -2,7 +2,7 @@
 <!--
 
     The MIT License
-    Copyright © 2024-2025 Andy Miles
+    Copyright © 2024-2026 Andy Miles
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@
 
     <name>mediainfo-jna</name>
     <description>A JNA wrapper to access MediaInfoLib</description>
-    <inceptionYear>2024-2025</inceptionYear>
+    <inceptionYear>2024-2026</inceptionYear>
     <url>https://www.amilesend.com/mediainfo-jna-wrapper/</url>
     <organization>
         <name>Andy Miles</name>

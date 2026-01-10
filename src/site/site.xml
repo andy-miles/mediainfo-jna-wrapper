@@ -2,7 +2,7 @@
 <!--
 
     The MIT License
-    Copyright © 2024-2025 Andy Miles
+    Copyright © 2024-2026 Andy Miles
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -34,6 +34,6 @@
     </skin>
     <body>
         <menu ref="reports"/>
-        <footer><![CDATA[Copyright &#169; 2024-2025 <a href="https://www.amilesend.com">Andy Miles</a>. All rights reserved.]]></footer>
+        <footer><![CDATA[Copyright &#169; 2024-2026 <a href="https://www.amilesend.com">Andy Miles</a>. All rights reserved.]]></footer>
     </body>
 </site>
