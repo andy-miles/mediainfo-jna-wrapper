@@ -143,7 +143,7 @@
     </profiles>
 
     <properties>
-        <spotbugs.version>4.9.8</spotbugs.version>
+        <spotbugs.version>4.10.1</spotbugs.version>
         <spotbugs.maven.plugin.version>4.9.8.3</spotbugs.maven.plugin.version>
         <jacoco.plugin.version>0.8.15</jacoco.plugin.version>
         <lombok.version>1.18.46</lombok.version>
