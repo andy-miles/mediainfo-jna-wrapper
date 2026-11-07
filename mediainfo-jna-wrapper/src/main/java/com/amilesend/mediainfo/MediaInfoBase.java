@@ -51,7 +51,7 @@ import static java.nio.charset.StandardCharsets.US_ASCII;
 
 /**
  * Base class for opening media files and accessing media information.
- *
+ * <p>
  * Example usage:
  *
  * <pre>
@@ -82,7 +82,7 @@ import static java.nio.charset.StandardCharsets.US_ASCII;
  */
 @Slf4j
 @RequiredArgsConstructor
-public abstract class MediaInfoBase<T extends MediaInfoBase> implements AutoCloseable {
+public abstract class MediaInfoBase<T extends MediaInfoBase<T>> implements AutoCloseable {
     private static final int BUFFER_SIZE_4_MB = 4194304;
     private static final int MIN_FILE_SIZE = 65536;
     private static final int MAX_FILENAME_LENGTH_WIN = 250;
@@ -103,6 +103,7 @@ public abstract class MediaInfoBase<T extends MediaInfoBase> implements AutoClos
      * @return the analyzer to retrieve information
      * @throws IOException if an error occurred while opening the media file
      */
+    @SuppressWarnings("unchecked")
     public T open(@NonNull final File file) throws IOException {
         Validate.isTrue(file.isFile(), "File must be a file");
         Validate.isTrue(file.length() >= MIN_FILE_SIZE, "File size must be >= " + MIN_FILE_SIZE);
@@ -114,7 +115,7 @@ public abstract class MediaInfoBase<T extends MediaInfoBase> implements AutoClos
                 return readViaBuffer(file);
             }
 
-            if (accessor.open(filePath) == true) {
+            if (accessor.open(filePath)) {
                 return (T) this;
             }
 
@@ -135,6 +136,7 @@ public abstract class MediaInfoBase<T extends MediaInfoBase> implements AutoClos
     }
 
     @VisibleForTesting
+    @SuppressWarnings("unchecked")
     T readViaBuffer(final File file) throws IOException {
         try (RandomAccessFile raf = new RandomAccessFile(file, "r")) {
             if (openViaBuffer(raf)) {
@@ -148,11 +150,11 @@ public abstract class MediaInfoBase<T extends MediaInfoBase> implements AutoClos
     @VisibleForTesting
     boolean openViaBuffer(final RandomAccessFile file) throws IOException {
         final byte[] buffer = new byte[BUFFER_SIZE_4_MB]; // Use 4MB buffer to reduce JNA calls
-        if (accessor.openBufferInit(file.length(), 0) == false) {
+        if (!accessor.openBufferInit(file.length(), 0)) {
             return false;
         }
 
-        int read = -1;
+        int read;
         do {
             read = file.read(buffer);
             if (read < 0) {
@@ -181,11 +183,7 @@ public abstract class MediaInfoBase<T extends MediaInfoBase> implements AutoClos
             return true;
         }
 
-        if (Platform.isMac() && !US_ASCII.newEncoder().canEncode(path)) {
-            return true;
-        }
-
-        return false;
+        return Platform.isMac() && !US_ASCII.newEncoder().canEncode(path);
     }
 
     /**
