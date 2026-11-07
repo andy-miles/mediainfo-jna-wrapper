@@ -82,7 +82,7 @@ import static java.nio.charset.StandardCharsets.US_ASCII;
  */
 @Slf4j
 @RequiredArgsConstructor
-public abstract class MediaInfoBase<T extends MediaInfoBase<T>> implements AutoCloseable {
+public abstract class MediaInfoBase<T extends MediaInfoBase> implements AutoCloseable {
     private static final int BUFFER_SIZE_4_MB = 4194304;
     private static final int MIN_FILE_SIZE = 65536;
     private static final int MAX_FILENAME_LENGTH_WIN = 250;
